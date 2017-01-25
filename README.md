@@ -10,6 +10,8 @@ Most of the operational semantics and much of the syntax taken from the language
 
 * All of the operational semantics of the language is implemented in around 100 lines of code (all in the file src/OpSem.hs). The code there reads very much like a formal specification in terms of judgements and derivations (provided that you know how to read basic Haskell/ML). 
   * It is technically a bit interesting in that it uses recursion schemes from [this library](https://hackage.haskell.org/package/recursion-schemes-5.0.1/docs/Data-Functor-Foldable.html). Almost all of the recursion needed to implement the language is very principled: you hand an environment to a sub-expression and get back a value and a new environment. All of needed recursion of this type is handled automatically by the recursion scheme, which (theoretically) provides easier to understand and maintain code (provided that you understand recursion schemes, which is really hard to understand to be fair. Sorry I don't know of a good resource on them).
+  
+* Modern Haskell techniques, including use of [parsec](https://hackage.haskell.org/package/parsec) for parsing and [mtl](https://hackage.haskell.org/package/mtl) for effect handling (including effects "within" the recursion schemes).
 
 * The files (and lines of code) in src/ break down like this:
   * AST.hs: define the AST and environment datatypes. 78 lines. This file is kinda interesting, and necessary to understand OpSem.hs.
